@@ -51,9 +51,9 @@ class Dog
 
   def self.find_or_create_by(name, breed, id)
     if id
-      find_by_id(id)
+      Dog.find_by_id(id)
     else
-      create(name: name, breed: breed)
+      Dog.create(name: name, breed: breed)
     end
   end
 
