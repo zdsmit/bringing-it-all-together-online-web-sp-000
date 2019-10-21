@@ -49,12 +49,9 @@ class Dog
     dog
   end
 
-  def self.find_or_create_by(name, breed, id)
-    if id
-      Dog.find_by_id(id)
-    else
-      Dog.create(name: name, breed: breed)
-    end
+  def self.find_or_create_by(name:, breed:)
+    sql = "SELECT * FROM dogs WHERE name = ? AND breed = ?"
+    DB[:conn].execute(sql, name, breed)
   end
 
   def self.find_by_id(id)
