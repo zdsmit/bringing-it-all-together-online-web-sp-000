@@ -50,9 +50,9 @@ class Dog
   end
 
   def self.find_or_create_by(name:, breed:)
-    sql = "SELECT * FROM dogs WHERE name = ? AND breed = ?"
+    sql = "SELECT * FROM dogs WHERE name = ? AND breed = ? LIMIT 1"
     dog = DB[:conn].execute(sql, name, breed)
-    binding.pry
+    
   end
 
   def self.find_by_id(id)
